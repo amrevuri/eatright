@@ -1,1 +1,1 @@
-# eatright
+# EatRight
