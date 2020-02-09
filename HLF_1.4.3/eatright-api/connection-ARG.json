@@ -1,0 +1,200 @@
+{
+  "name": "eatrightcc",
+  "x-type": "hlfv1",
+  "x-commitTimeout": 300,
+  "version": "1.0.0",
+  "client": {
+    "organization": "ARG",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300",
+          "eventHub": "300",
+          "eventReg": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "eatrightchannel": {
+        "orderers": [
+          "orderer.eatright.com"
+        ],
+        "peers": {
+            "peer0.fda.eatright.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.arg.eatright.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.bulletweights.eatright.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.sfl.eatright.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+                  }
+                }
+            }
+        },  
+    "organizations": {      
+
+      "FDA": {
+        "mspid": "FDAMSP",
+        "peers": [
+            "peer0.fda.eatright.com"
+        ],
+        "certificateAuthorities": [
+          "ca.fda.eatright.com"
+        ]
+    },
+
+
+      "ARG": {
+        "mspid": "ARGMSP",
+        "peers": [
+            "peer0.arg.eatright.com"
+        ],
+        "certificateAuthorities": [
+          "ca.arg.eatright.com"
+        ]
+    },
+
+
+      "BulletWeights": {
+        "mspid": "BulletWeightsMSP",
+        "peers": [
+            "peer0.bulletweights.eatright.com"
+        ],
+        "certificateAuthorities": [
+          "ca.bulletweights.eatright.com"
+        ]
+    },
+
+
+      "SFL": {
+        "mspid": "SFLMSP",
+        "peers": [
+            "peer0.sfl.eatright.com"
+        ],
+        "certificateAuthorities": [
+          "ca.sfl.eatright.com"
+        ]
+    }
+      },
+  "orderers":{
+    "orderer.eatright.com": {
+      "url": "grpc://10.64.82.45:7050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer.eatright.com",
+        "grpc.keepalive_time_ms": 600000,
+        "grpc.max_send_message_length": 15728640,
+        "grpc.max_receive_message_length": 15728640
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICRjCCAe2gAwIBAgIQJyUVJTa7rPp8SVxtNs2W2jAKBggqhkjOPQQDAjBuMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEVMBMGA1UEChMMZWF0cmlnaHQuY29tMRswGQYDVQQDExJ0bHNjYS5l\nYXRyaWdodC5jb20wHhcNMjAwMjA5MDU0NjAwWhcNMzAwMjA2MDU0NjAwWjBuMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEVMBMGA1UEChMMZWF0cmlnaHQuY29tMRswGQYDVQQDExJ0bHNjYS5l\nYXRyaWdodC5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARYObY/bI5eh91t\nIJI7OZ5sezMfKYVq0Kr7Bsv8eaB4itSAg7zS+LaD7CJY7dHlxVgKjkvBKzOTTD0i\nD9jM/ApSo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIG\nCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIEzAqrbMT1SyUYt1\nkN2g+0xRFHs2m39UJGk+Oz6qYqSXMAoGCCqGSM49BAMCA0cAMEQCIAy/TkWJjA3D\nljvBANJPD8mk+jKFqwcahecGeDYc2oAVAiBWc3lFtWvHamcVpbSoI0umhIyLg0iG\ntu9J36wYS2ngKw==\n-----END CERTIFICATE-----\n"
+      }
+    }
+  },
+  "peers": {
+
+     "peer0.fda.eatright.com": {
+      "url": "grpc://10.64.82.45:7051",
+      "eventUrl": "grpc://10.64.82.45:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.fda.eatright.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICWDCCAf6gAwIBAgIRANCIbXxUafn+a6QXk37Jp4MwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGZkYS5lYXRyaWdodC5jb20xHzAdBgNVBAMTFnRs\nc2NhLmZkYS5lYXRyaWdodC5jb20wHhcNMjAwMjA5MDU0NjAwWhcNMzAwMjA2MDU0\nNjAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQZmRhLmVhdHJpZ2h0LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuZmRhLmVhdHJpZ2h0LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABCnXMKOXqFPxuLdi6yjQGZ6+8YHBTXvA/8OVvMMJactUHKhu9ugM2Q+1\nUEFF9QLS7c8/+b/a4FyNy5joS8lSRjKjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV\nHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV\nHQ4EIgQgqKm6PsMTboJSa1djlIhUe3xJiL/2zmumDOTFta5IOIwwCgYIKoZIzj0E\nAwIDSAAwRQIhAKBoA9Zpg2XBE7earL8gA3pftr2p+6A+U6QQuDnPVYWIAiBWRQ9M\nmL5Tg8uLAI7TmsnpDH7NyJCYC/ADqnjg/7N6bA==\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+
+     "peer0.arg.eatright.com": {
+      "url": "grpc://10.64.82.45:7051",
+      "eventUrl": "grpc://10.64.82.45:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.arg.eatright.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICWDCCAf6gAwIBAgIRANCIbXxUafn+a6QXk37Jp4MwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGZkYS5lYXRyaWdodC5jb20xHzAdBgNVBAMTFnRs\nc2NhLmZkYS5lYXRyaWdodC5jb20wHhcNMjAwMjA5MDU0NjAwWhcNMzAwMjA2MDU0\nNjAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQZmRhLmVhdHJpZ2h0LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuZmRhLmVhdHJpZ2h0LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABCnXMKOXqFPxuLdi6yjQGZ6+8YHBTXvA/8OVvMMJactUHKhu9ugM2Q+1\nUEFF9QLS7c8/+b/a4FyNy5joS8lSRjKjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV\nHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV\nHQ4EIgQgqKm6PsMTboJSa1djlIhUe3xJiL/2zmumDOTFta5IOIwwCgYIKoZIzj0E\nAwIDSAAwRQIhAKBoA9Zpg2XBE7earL8gA3pftr2p+6A+U6QQuDnPVYWIAiBWRQ9M\nmL5Tg8uLAI7TmsnpDH7NyJCYC/ADqnjg/7N6bA==\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+
+     "peer0.bulletweights.eatright.com": {
+      "url": "grpc://10.64.82.45:7051",
+      "eventUrl": "grpc://10.64.82.45:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.bulletweights.eatright.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICWDCCAf6gAwIBAgIRANCIbXxUafn+a6QXk37Jp4MwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGZkYS5lYXRyaWdodC5jb20xHzAdBgNVBAMTFnRs\nc2NhLmZkYS5lYXRyaWdodC5jb20wHhcNMjAwMjA5MDU0NjAwWhcNMzAwMjA2MDU0\nNjAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQZmRhLmVhdHJpZ2h0LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuZmRhLmVhdHJpZ2h0LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABCnXMKOXqFPxuLdi6yjQGZ6+8YHBTXvA/8OVvMMJactUHKhu9ugM2Q+1\nUEFF9QLS7c8/+b/a4FyNy5joS8lSRjKjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV\nHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV\nHQ4EIgQgqKm6PsMTboJSa1djlIhUe3xJiL/2zmumDOTFta5IOIwwCgYIKoZIzj0E\nAwIDSAAwRQIhAKBoA9Zpg2XBE7earL8gA3pftr2p+6A+U6QQuDnPVYWIAiBWRQ9M\nmL5Tg8uLAI7TmsnpDH7NyJCYC/ADqnjg/7N6bA==\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+      
+      "peer0.sfl.eatright.com": {
+      "url": "grpc://10.64.82.45:8051",
+      "eventUrl": "grpc://10.64.82.45:8053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.sfl.eatright.com",
+        "hostnameOverride": "peer0.sfl.eatright.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICVzCCAf2gAwIBAgIQBKDmmY5WLdEcDRKbRQEy1jAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQc2ZsLmVhdHJpZ2h0LmNvbTEfMB0GA1UEAxMWdGxz\nY2Euc2ZsLmVhdHJpZ2h0LmNvbTAeFw0yMDAyMDkwNTQ2MDBaFw0zMDAyMDYwNTQ2\nMDBaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBzZmwuZWF0cmlnaHQuY29tMR8wHQYD\nVQQDExZ0bHNjYS5zZmwuZWF0cmlnaHQuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAEgzVOta3LyRo3Idde7nzZtFDzUTIfr0TAjHmF5dnOnqzCEsYPA9YP1uRi\n7bSPlzNKfLZCOhB84VU+6bGMEXlRmaNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1Ud\nJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1Ud\nDgQiBCD7pvVIzil2rHAjpdCRrF3PfJeP+7fS4e+nbFliagJrKTAKBggqhkjOPQQD\nAgNIADBFAiEA3occfiJuk0iDe+fpdj2I74D0jEvRhAKYXrxRRJt1SfMCIAmXlQvP\n3BxDUkBDfnRGcogWFj2wKbUN1M/KcDQ1oH24\n-----END CERTIFICATE-----\n"
+      }
+    }
+   },
+    "certificateAuthorities":{
+    "ca.fda.eatright.com": {
+      "url": "http://10.64.82.45:7054",
+      "caName": "ca.fda.eatright.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICUTCCAfigAwIBAgIRAJA4950cwmEMHF4MWOY2eogwCgYIKoZIzj0EAwIwczEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGZkYS5lYXRyaWdodC5jb20xHDAaBgNVBAMTE2Nh\nLmZkYS5lYXRyaWdodC5jb20wHhcNMjAwMjA5MDU0NjAwWhcNMzAwMjA2MDU0NjAw\nWjBzMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\nU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQZmRhLmVhdHJpZ2h0LmNvbTEcMBoGA1UE\nAxMTY2EuZmRhLmVhdHJpZ2h0LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBBMJJrb01q2qefzpxnA5QSBRBNgB2rhB8VNmYdCMrEFsQHI9/3jxnn3qr0FTQSMv\nsHhoJ1zoYv3vOJryEpZMt2yjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAU\nBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQg\nF7KIoiPshjiMgqMOcGXV27ZNBvYghm3NI5AhJoR4r90wCgYIKoZIzj0EAwIDRwAw\nRAIgMkdnH03mcWYWLamcOkk9munjXOZunZImVl2Xa5KsXBwCIDwX5HG5TUvaFhVd\nXbtWK7NoNd+YytgkDazYs1aRFOs9\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.arg.eatright.com": {
+      "url": "http://10.64.82.45:8054",
+      "caName": "ca.arg.eatright.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICUTCCAfigAwIBAgIRAMtzim1mgG8lJLu4xh/1jJswCgYIKoZIzj0EAwIwczEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGFyZy5lYXRyaWdodC5jb20xHDAaBgNVBAMTE2Nh\nLmFyZy5lYXRyaWdodC5jb20wHhcNMjAwMjA5MDU0NjAwWhcNMzAwMjA2MDU0NjAw\nWjBzMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\nU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQYXJnLmVhdHJpZ2h0LmNvbTEcMBoGA1UE\nAxMTY2EuYXJnLmVhdHJpZ2h0LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBPybkjwI86JtKxg+p/nmt1xAgefWpWP/WwTDGqBWqVnvd2z4MingbnveiYlcxoT8\nUu3WbqvGZtoRGzR9TYOlj52jbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAU\nBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQg\nr8u/1skv+hG2CRWzVoFOOv59zcWn6axtDduK8QPcMlkwCgYIKoZIzj0EAwIDRwAw\nRAIgIZ33vXIGGNSTGFZM9tmYZ/QFG5pLOP5GLKqw+O06hIQCIBJ2uuOkdBInJe8Y\nbmUuunK/7lV5KCSKCR3htGeQPY6v\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.bulletweights.eatright.com": {
+      "url": "http://10.64.82.45:9054",
+      "caName": "ca.bulletweights.eatright.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICejCCAiGgAwIBAgIQYN0fD/Eh6K965KBgwH3d7jAKBggqhkjOPQQDAjCBhzEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xIzAhBgNVBAoTGmJ1bGxldHdlaWdodHMuZWF0cmlnaHQuY29tMSYw\nJAYDVQQDEx1jYS5idWxsZXR3ZWlnaHRzLmVhdHJpZ2h0LmNvbTAeFw0yMDAyMDkw\nNTQ2MDBaFw0zMDAyMDYwNTQ2MDBaMIGHMQswCQYDVQQGEwJVUzETMBEGA1UECBMK\nQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEjMCEGA1UEChMaYnVs\nbGV0d2VpZ2h0cy5lYXRyaWdodC5jb20xJjAkBgNVBAMTHWNhLmJ1bGxldHdlaWdo\ndHMuZWF0cmlnaHQuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcsDUAWze\nu0hmQ7SzW9KovJRdblNkUrSTocDUUZMbIvXgc02/+nOOpQnjcqo7HCAOBqX7Ykbd\nroPfpOvQw0T3v6NtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUF\nBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCD9zU/Lacmg\nF/03NPjpT7T/GQQ33SrokZ9b42+JvQpOLTAKBggqhkjOPQQDAgNHADBEAiBl93TZ\nbBgzL+VCZJtluXdcBYcYpG1q0pjWwtoa6OkrmgIgCjPqcbBrB9pvjW92Pde0YJ0M\nB+rg0hlSRgLn2IqfxoM=\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.sfl.eatright.com": {
+      "url": "http://10.64.82.45:10054",
+      "caName": "ca.sfl.eatright.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICUTCCAfegAwIBAgIQGVmTyKRSbxxxQGsw7FBedjAKBggqhkjOPQQDAjBzMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQc2ZsLmVhdHJpZ2h0LmNvbTEcMBoGA1UEAxMTY2Eu\nc2ZsLmVhdHJpZ2h0LmNvbTAeFw0yMDAyMDkwNTQ2MDBaFw0zMDAyMDYwNTQ2MDBa\nMHMxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1T\nYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBzZmwuZWF0cmlnaHQuY29tMRwwGgYDVQQD\nExNjYS5zZmwuZWF0cmlnaHQuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE\nu+4ZBYYo03Qs/zT5HjVZ1YySJ5LvhCvnRAPem5cBykg2S+P4KSgXCE09nqa77u/e\nCgfXLBtS1UJ0q8NMNMYoBqNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQG\nCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCDB\n0a8zzV3H5Rnkkmy8oQZEGBs+f/biMP2brzDNeZadYDAKBggqhkjOPQQDAgNIADBF\nAiEAiTYfyYrkE3foFdtvZ90AOcQK8MIJ3t2E4GN06UUxW/YCIGx0uH5cfUeZWPPI\nFdECxygIxFInFC5zz00wlY2kap/r\n-----END CERTIFICATE-----\n"
+      }
+    }
+    }
+    }
+    
